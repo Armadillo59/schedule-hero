@@ -1,12 +1,24 @@
 import React from "react";
 
+import { Card, Box, Typography, Button } from "@mui/material";
+
+
 
 function Event(){
 
     return (
-        <div>
-            <div>Events</div>
-        </div>
+        <Card>
+            <Typography>
+                User:
+            </Typography>
+            <Typography>
+                User:
+            </Typography>
+            <Typography>
+                User:
+            </Typography>
+
+        </Card>
 
     )
 }
