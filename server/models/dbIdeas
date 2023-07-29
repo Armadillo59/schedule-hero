@@ -1,0 +1,30 @@
+User Collection: This will store user profile information.
+    userId: Unique identifier for the user.
+    username: The username of the user.
+    email: The email of the user.
+    password: The hashed password of the user.
+    events: An array of event IDs that the user is a part of.
+
+
+Event Collection: This will store event information.
+    eventId: Unique identifier for the event.
+    eventName: The name of the event.
+    eventDescription: A brief description of the event.
+    eventDate: The date of the event.
+    participants: An array of user IDs who are participating in the event.
+    availability: An object that contains the availability of each participant.
+
+    participants: [
+      {
+        userId: string,
+        availability: [Mon-Sun]
+
+      }
+    ]
+
+    availability[0] = {
+        cantDo: [2-4, 6-7]
+        available: [12-1:30, 7:30 - 10]
+    }
+
+    //default to cantDoAll
