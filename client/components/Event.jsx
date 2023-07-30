@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function Event(){
+function Event() {
 
     return (
         <div>

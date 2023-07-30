@@ -20,8 +20,11 @@ const EventSchema = new mongoose.Schema({
 //   eventDescription: String,
 //   eventDate: Date,
 //   participants: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
-  participants: [{type: String, ref: 'User'}],
-  availability: Object
+  participants: [{
+      userName: {type: String, ref: 'User'},
+      availability: Object
+    }],
+  // availability: Object
 });
 
 // Define User and Event Models
