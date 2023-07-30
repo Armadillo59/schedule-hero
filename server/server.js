@@ -21,6 +21,7 @@ if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.resolve(__dirname, '../build')));
 }
 
+
 // post data to db from FE /admin
 app.post("/user", eventController.addUser, (req, res) => res.status(201).json(res.locals.userAdded) ); // redirect to "/:user"
 app.post("/event", eventController.createEvent, (req, res) => res.status(201).json(res.locals.eventCreated) );

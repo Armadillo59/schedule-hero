@@ -12,10 +12,10 @@ function EventList() {
 
     const fetchEvent = async () =>{
       try {
-        const response = await fetch('http://localhost:3000/')
+        const response = await fetch('http://localhost:8080/events/pinta')
         const data = await response.json();
         console.log("data from backend: ", data)
-        setState(data);
+      updateState(data);
       }catch (err){
         console.log(` ${err}`)
       }
