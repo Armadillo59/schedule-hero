@@ -1,4 +1,4 @@
-const {Event, User} = require('../database/models.js')
+const {Event, User} = require('../models/models.js')
 // const User = require('../database/models.js')
 
 const eventController = {};
@@ -6,10 +6,12 @@ const eventController = {};
 // eventController.addUser = (req, res, next) => {}; - in the userController
 
 eventController.createEvent = (req, res, next) => {
-    const {eventName, eventDiscription, userName, availability} = req.body;
+    const {eventName, eventDescription, userName, availability} = req.body;
     
     // First, check if the event already exists
-    Event.findOne({ eventName: eventName })
+    User.findOne( {userName: userName})
+    .then((foundUser) => {
+      Event.findOne({ eventName: eventName })
       .then((foundEvent) => {
         if (foundEvent) {
           // If the event exists, add the user as a participant and their availability
@@ -32,7 +34,7 @@ eventController.createEvent = (req, res, next) => {
           const newEvent = new Event({
             eventName: eventName,
             participants: [userName],
-            availability: availability
+            availability: { [userName] : availability}
           });
   
           newEvent.save()
@@ -53,7 +55,10 @@ eventController.createEvent = (req, res, next) => {
       .catch((error) => {
         console.error('Error finding event:', error);
       });
-  
+    }).catch((error) => {
+      console.error('Error finding user:', error);
+    });
+   
 
 };
 
@@ -75,6 +80,7 @@ eventController.getEvents = (req, res, next) => {
 // eventController.submitAvailability = (req, res, next) => { };
 
 module.exports = eventController;
+
 
 
 // Function to create a new event but with a check if it already exists

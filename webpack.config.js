@@ -2,7 +2,6 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  
   mode: process.env.NODE_ENV,
   entry: path.resolve(__dirname, 'client/index.js'),
   output: {
@@ -14,10 +13,10 @@ module.exports = {
     host: 'localhost',
     port: 8080,
     proxy: [ //redirects requests to host 3000
-      // {
-      //   context: ['', ''],
-      //   target: 'http://localhost:3000'
-      // },
+      {
+        context: ['', ''],
+        target: 'http://localhost:3000'
+      },
     ],
     static: {
       directory: path.resolve(__dirname, 'build'),

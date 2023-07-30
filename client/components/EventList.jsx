@@ -5,14 +5,14 @@ import { useState, useEffect } from 'react';
 //Usestate 
 
 function EventList() {
-  const { setState, updateState } = useState({})
+  const { currentState, updateState } = useState({})
 
   
   useEffect(()=>{
 
     const fetchEvent = async () =>{
       try {
-        const response = await fetch('http://localhost:8080/events/pinta')
+        const response = await fetch('/events/David')
         const data = await response.json();
         console.log("data from backend: ", data)
       updateState(data);
@@ -30,14 +30,14 @@ function EventList() {
   return (
       // <Event key={index}   />
       <div className='cardContainer'>
-      {/* {setState.map(events=>{
+      {/* {currentState.map(events=>{
         return (
           <div className='cardContainer'>
             <Event eventName={events.eventName}
             User={events.user}
             day={events.day}
             start={events.start}
-            end={end}
+            end={event.end}
             />
           </div>
         )
