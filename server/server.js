@@ -3,7 +3,8 @@ const path = require('path')
 const app = express();
 const PORT = 3000;
 
-const eventController = require('./controller');
+const eventController = require('./controllers/eventController');
+const userController = require('./controllers/userController');
 
 const mongoose = require('mongoose');
 
