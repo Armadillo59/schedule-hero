@@ -15,8 +15,7 @@ eventController.createEvent = (req, res, next) => {
       .then((foundEvent) => {
         if (foundEvent) {
           // If the event exists, add the user as a participant and their availability
-          foundEvent.participants.push(userName);
-          foundEvent.availability[userName] = availability;
+          foundEvent.participants.push({userName: userName, availability: availability});
   
           // Save the updated event
           foundEvent.save()
@@ -33,8 +32,7 @@ eventController.createEvent = (req, res, next) => {
           // If the event does not exist, create a new event
           const newEvent = new Event({
             eventName: eventName,
-            participants: [userName],
-            availability: { [userName] : availability}
+            participants: [{userName: userName, availability: availability}]
           });
   
           newEvent.save()
