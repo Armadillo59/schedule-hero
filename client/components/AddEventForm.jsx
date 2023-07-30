@@ -52,8 +52,10 @@ function AddEventForm(props) {
     });
 
     function isMissing(obj) {
-      for (day in obj) {
-        if (!day.start.length || !day.end.length) return true;
+      console.log(obj);
+      for (const day in obj) {
+        console.log(day.start);
+        if (!obj[day].start.length || !obj[day].end.length) return true;
       }
       return false;
     }
