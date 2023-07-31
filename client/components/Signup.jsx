@@ -134,6 +134,15 @@ function Signup() {
               >
                 Sign Up
               </Button>
+              <Grid container>
+                <Grid item xs>
+                </Grid>
+                <Grid item>
+                  <Link href="/login" variant="body2" sx={{color: 'black', fontWeight: "bold"}}>
+                    {"I Already Have An Account"}
+                  </Link>
+                </Grid>
+              </Grid>
             </Box>
           </Paper>
         </Grid>
