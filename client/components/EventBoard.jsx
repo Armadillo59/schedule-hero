@@ -8,8 +8,7 @@ import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
-import Box from '@mui/material/Box';
-import { sizing } from '@mui/system';
+import Typography from '@mui/material/Typography';
 
 
 function EventBoard() {
@@ -68,11 +67,16 @@ function EventBoard() {
         {invalidUserName && <Alert sx={{position: 'absolute', marginTop: 2}} severity='error'>Please enter a username.</Alert>}
       </Container>
       <AddEventForm open={open} setOpen={setOpen} handleClose={handleClose} />
-      <Paper elevation={4} sx={{ m: 3, marginTop: 20, width: '90%', height: '60vh' }}>
-        <Paper variant="outlined" sx={{ width: '100%', height: '100%', backgroundColor: ''}}>
-          <EventList/>
+      <Container sx={{m: 3, marginTop: 16}}>
+        <Typography variant="h5">
+          Events
+        </Typography>
+        <Paper elevation={4} sx={{  width: '90%', height: '60vh' }}>
+          <Paper variant="outlined" sx={{ width: '100%', height: '100%', backgroundColor: ''}}>
+            <EventList/>
+          </Paper>
         </Paper>
-      </Paper>
+      </Container>
     </Container>
 
   );

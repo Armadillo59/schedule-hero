@@ -5,7 +5,7 @@ function Event() {
 
     return (
         <div>
-            <div>Events</div>
+            <div></div>
         </div>
 
     )
