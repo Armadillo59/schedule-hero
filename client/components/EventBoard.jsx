@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import AddEventForm from "./AddEventForm";
 import TextField from '@mui/material/TextField';
 import Alert from '@mui/material/Alert';
+import Container from '@mui/material/Container';
 
 function EventBoard() {
   const [open, setOpen] = useState(false);
@@ -47,21 +48,24 @@ function EventBoard() {
   }
 
   return (
-    <div>
-      <Button variant='contained' onClick={handleClickOpen}>Add Event</Button>
-      <TextField 
-            margin='dense'
-            label='Username'
-            type='text'
-            fullWidth
-            variant='standard'
-            onChange={e => setUserName(e.target.value)}
-          />
-      <Button variant='contained' onClick={handleClickAddUser}>Add User</Button>
+    <Container sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+      <Button variant='contained' sx={{ m: 3 }}onClick={handleClickOpen}>Add Event</Button>
+      <Container sx={{display: 'flex', justifyContent: 'center'}}>
+        <TextField 
+              margin='dense'
+              label='Username'
+              type='text'
+              variant='standard'
+              onChange={e => setUserName(e.target.value)}
+              />
+        <Button variant='outlined' sx={{marginTop: 2, marginLeft: 5}} onClick={handleClickAddUser}>Add User</Button>
+      </Container>
       {invalidUserName && <Alert severity='error'>Please enter a username.</Alert>}
       <AddEventForm open={open} setOpen={setOpen} handleClose={handleClose} />
-      <EventList />
-    </div>
+      <Container sx={{ width: '80%', height: '50%', borderBlockColor: "white" }}>
+        <EventList/>
+      </Container>
+    </Container>
 
   );
 }
