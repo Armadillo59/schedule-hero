@@ -18,6 +18,7 @@ const App = () => {
           <Routes>
             <Route path='/' element={<MainContainer />}></Route>
             <Route path='/login' element={<Login />}></Route>
+            {/* <Route path='/signup' element={<Login />}></Route> */}
           </Routes>
         </BrowserRouter>
     </ThemeProvider>
