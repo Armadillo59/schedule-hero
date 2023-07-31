@@ -29,7 +29,7 @@ function HeaderAppBar(props) {
         <Typography variant="h6" fontFamily="monospace" >
           SCHEDULE HERO
         </Typography>
-        {displayLogOut && <Button variant="text" onClick={handleLogOut}>Log Out</Button>}
+        {displayLogOut && <Button color="white" variant="text" onClick={handleLogOut}>Log Out</Button>}
       </Container>
     </AppBar>
   )
