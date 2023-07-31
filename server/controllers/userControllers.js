@@ -3,11 +3,11 @@ const { User } = require('../models/models.js')
 const userController = {};
 
 userController.createUser = (req, res, next) => {
-        const { userName } = req.body;
+        const { userName, password } = req.body;
         const newUser = new User({
         userName: userName,
         // email: email,
-        // password: password, // make sure to hash the password before saving
+        password: password, // make sure to hash the password before saving
         events: []
         });
     

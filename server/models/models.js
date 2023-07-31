@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
 //   email: String,
-//   password: String,
+  password: String,
   events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }]
 });
 
@@ -24,7 +24,7 @@ const EventSchema = new mongoose.Schema({
       userName: {type: String, ref: 'User'},
       availability: Object
     }],
-  // availability: Object
+  worksForEverbody: Object
 });
 
 // Define User and Event Models
