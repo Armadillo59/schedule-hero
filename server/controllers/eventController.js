@@ -1,4 +1,5 @@
 const {Event, User} = require('../models/models.js')
+const commonAvailability = require("../helper/func")
 // const User = require('../database/models.js')
 
 const eventController = {};
@@ -18,7 +19,7 @@ eventController.createEvent = (req, res, next) => {
           foundEvent.participants.push({userName: userName, availability: availability});
 
           //added func that updates the intersection availability data in the DB
-          foundEvent.worksForEverbody = overlapFunc(foundEvent.participants)
+          foundEvent.worksForEverbody = commonAvailability(foundEvent.participants)
 
           // Save the updated event
           foundEvent.save()
@@ -39,7 +40,7 @@ eventController.createEvent = (req, res, next) => {
             worksForEverybody: []
           });
           
-          const instersection = overlapFunc(newEvent.participants)
+          const instersection = commonAvailability(newEvent.participants)
 
           newEvent.worksForEverbody = instersection
 
