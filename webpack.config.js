@@ -13,10 +13,10 @@ module.exports = {
     host: 'localhost',
     port: 8080,
     proxy: [ //redirects requests to host 3000
-      // {
-      //   context: ['', ''],
-      //   target: 'http://localhost:3000'
-      // },
+      {
+        context: ['/user', '/event', '/events'],
+        target: 'http://localhost:3000'
+      },
     ],
     static: {
       directory: path.resolve(__dirname, 'build'),
