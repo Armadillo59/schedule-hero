@@ -19,7 +19,7 @@ import { green } from '@mui/material/colors';
 // Create a theme instance.
 const defaultTheme = createTheme();
 
-function Login() {
+function Signup() {
   const navigate = useNavigate();
   
   const handleSubmit = (event) => {
@@ -49,7 +49,7 @@ function Login() {
       body: JSON.stringify(body)
     };
 
-    fetch(`/user/login`, requestOptions)
+    fetch(`/user/signup`, requestOptions)
       .then(response => response.json())
       .then((data) => {
         // If successful, store session, username and go to home
@@ -99,7 +99,7 @@ function Login() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5" >
-              Log In
+              Sign Up
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 , borderColor: 'green'}}>
               <TextField
@@ -132,20 +132,8 @@ function Login() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Log In
+                Sign Up
               </Button>
-              <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2" sx={{color: 'black', fontWeight: "bold"}}>
-                    Forgot password?
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link href="/signup" variant="body2" sx={{color: 'black', fontWeight: "bold"}}>
-                    {"Sign Up"}
-                  </Link>
-                </Grid>
-              </Grid>
             </Box>
           </Paper>
         </Grid>
@@ -154,4 +142,4 @@ function Login() {
   );
 }
 
-export default Login
+export default Signup

@@ -5,6 +5,7 @@ import { theme } from './themes';
 
 import MainContainer from "./components/MainContainer";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 import HeaderAppBar from "./components/HeaderAppBar";
 
 const App = () => {
@@ -18,7 +19,7 @@ const App = () => {
           <Routes>
             <Route path='/' element={<MainContainer />}></Route>
             <Route path='/login' element={<Login />}></Route>
-            {/* <Route path='/signup' element={<Login />}></Route> */}
+            <Route path='/signup' element={<Signup />}></Route>
           </Routes>
         </BrowserRouter>
     </ThemeProvider>
