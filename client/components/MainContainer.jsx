@@ -8,7 +8,7 @@ import Container from '@mui/material/Container';
 
 function MainContainer() {
   return (
-    <Container sx={{padding: 0}}>
+    <Container disableGutters >
       <HeaderAppBar />
       <EventBoard />
     </Container>
