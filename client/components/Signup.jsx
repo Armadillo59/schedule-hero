@@ -53,8 +53,8 @@ function Signup() {
       .then(response => response.json())
       .then((data) => {
         // If successful, store session, username and go to home
-        console.log(data);
-        navigate('/');
+        if (data.err) alert('Username already exists.');
+        else navigate('/');
       })
       .catch((err) => {
         console.log('error signing up: ', err);
