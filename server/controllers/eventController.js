@@ -61,11 +61,10 @@ eventController.createEvent = (req, res, next) => {
 };
 
 eventController.getEvents = (req, res, next) => {
-  const { userName } = req.params;
-  
-  User.findOne({ username: userName }).populate('events')
+  const { user } = req.params;
+  console.log(user)
+  User.findOne({ username: user }).populate('events')
   .then(userEvents => {
-    console.log(userEvents);
     res.locals.userEvents = userEvents;
     return next()
   })

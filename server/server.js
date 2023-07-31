@@ -7,7 +7,7 @@ const eventController = require('./controllers/eventController');
 const userController = require('./controllers/userControllers');
 
 const mongoose = require('mongoose');
-const userController = require('./controllers/userControllers');
+
 
 require('dotenv').config();
 
@@ -35,9 +35,8 @@ app.post("/event", eventController.createEvent, (req, res) => res.status(201).js
     // GET - request: event name   
 // app.get("/availableTimes", eventController.viewAvailableTimes, /* some logic function */ (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../build')));
 
-app.get("/events/:user", eventController.getEvents, (res, req) => {
-    res.status(200).json(res.locals.userEvents)
-});
+app.get("/events/:user", eventController.getEvents, (req, res) => res.status(200).json(res.locals.userEvents)
+);
 
 // app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

@@ -5,16 +5,15 @@ import { useState, useEffect } from 'react';
 //Usestate 
 
 function EventList() {
-  const { currentState, updateState } = useState({})
+  const [ currentState, updateState ] = useState(null)
 
   
   useEffect(()=>{
 
     const fetchEvent = async () =>{
       try {
-        const response = await fetch('/events/David')
+        const response = await fetch('/events/Pinta')
         const data = await response.json();
-        console.log("data from backend: ", data)
       updateState(data);
       }catch (err){
         console.log(` ${err}`)
@@ -22,34 +21,50 @@ function EventList() {
     }
     fetchEvent();
   }, [])
-   //[] dependancies for when it will fire again 
-   //when the form is submitted, it should fire again with a delay 
+   //[] dependancies for when it will fire again    
 
-   
+  console.log('This is current state',currentState);
+
+  // const days = Object.keys(currentState.events[0].participants[0].availability).map((day)=> day)
+  // const starts = Object.keys(currentState.events[0].participants[0].availability).map((day)=> day.start);
+  // const ends = Object.keys(currentState.events[0].participants[0].availability).map((day)=> day.end);
 
   return (
       // <Event key={index}   />
       <div className='cardContainer'>
-      {/* {currentState.map(events=>{
-        return (
-          <div className='cardContainer'>
-            <Event eventName={events.eventName}
-            User={events.user}
-            day={events.day}
-            start={events.start}
-            end={event.end}
-            />
+          <div>
+          <Event
+          user={ currentState ? currentState.username : ''}
+          eventName = {
+            currentState ? 
+              currentState.events[0].eventName : ''
+          }
+
+          participants = {currentState ? 
+            currentState.events[0].participants[0].username : ''
+          }
+          
+          //{currentState ? 
+        //day = {Object.keys(currentState.events[0].participants[0].availability).map((day)=>{
+         // return day;
+        //})
+        //}
+         //stat = {Object.keys(currentState.events[0].participants[0].availability).map((start)=>{
+         // return day;
+        //})
+        //}
+         //end = {Object.keys(currentState.events[0].participants[0].availability).map((end)=>{
+         // return end;
+        //})
+        //}
+          // day = {days}
+          // start = {starts}
+          // end = {ends}
+  
+          />
           </div>
-        )
-      })} */}
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
-      <Event />
+    
+
       </div>
   );
 }
