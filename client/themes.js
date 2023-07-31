@@ -1,11 +1,10 @@
 import { createTheme } from '@mui/material/styles';
-// import { lightGreen } from '@mui/material/colors';
+import { indigo, pink } from '@mui/material/colors';
 
 export const theme = createTheme({
   palette: {
     mode: 'dark',
-    primary: {
-      main: '#e3f2fd'
-    }
+    primary: indigo,
+    secondary: pink,
   }
 });

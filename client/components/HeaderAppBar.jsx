@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Container from '@mui/material/Container';
@@ -9,9 +9,17 @@ import Button from '@mui/material/Button';
 
 function HeaderAppBar(props) {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Can replace with session once that is implemented
+  const [displayLogOut, setDisplayLogOut] = useState(() => {
+    if (location.pathname === '/') return true;
+    return false;
+  })
 
   function handleLogOut(e) {
     // Probably need to resolve token or session, delete stuff in localStorage when logging out
+    setDisplayLogOut(false);
     navigate('/login');
   }
 
@@ -21,7 +29,7 @@ function HeaderAppBar(props) {
         <Typography variant="h6" fontFamily="monospace" >
           SCHEDULE HERO
         </Typography>
-        <Button variant="text" onClick={handleLogOut}>Log Out</Button>
+        {displayLogOut && <Button variant="text" onClick={handleLogOut}>Log Out</Button>}
       </Container>
     </AppBar>
   )
