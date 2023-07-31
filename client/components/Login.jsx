@@ -54,7 +54,7 @@ function Login() {
       .then((data) => {
         // If successful, store session, username and go to home
         if (data.success) navigate('/');
-        else alert('Invalid username or password');
+        else alert('Invalid username or password.');
 
       })
       .catch((err) => {
