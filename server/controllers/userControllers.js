@@ -7,7 +7,7 @@ const userController = {
     createUser: function createUser(req, res, next) {
         const { userName } = req.body;
         const newUser = new User({
-        username: userName,
+        userName: userName,
         // email: email,
         // password: password, // make sure to hash the password before saving
         events: []

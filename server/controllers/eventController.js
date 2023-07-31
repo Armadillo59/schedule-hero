@@ -6,7 +6,7 @@ const eventController = {};
 // eventController.addUser = (req, res, next) => {}; - in the userController
 
 eventController.createEvent = (req, res, next) => {
-    const {eventName, eventDiscription, userName, availability} = req.body;
+    const {eventName, eventDescription, userName, availability} = req.body;
     
     // First, check if the event already exists
     Event.findOne({ eventName: eventName })
@@ -21,7 +21,7 @@ eventController.createEvent = (req, res, next) => {
                 console.log('User added to existing event')
                 // After adding user to the event, add it to the user's events
                 User.updateOne(
-                    { username: userName },
+                    { userName: userName },
                     { $push: { events: savedEvent._id } }
                   ).then(() => console.log('Event added to user'));
             })
@@ -39,7 +39,7 @@ eventController.createEvent = (req, res, next) => {
   
               // After saving the event, add it to the user's events
               User.updateOne(
-                { username: userName },
+                { userName: userName },
                 { $push: { events: savedEvent._id } }
               ).then(() => console.log('Event added to user'));
             })
@@ -58,7 +58,7 @@ eventController.createEvent = (req, res, next) => {
 eventController.getEvents = (req, res, next) => {
   const { userName } = req.params;
   
-  User.findOne({ username: userName }).populate('events')
+  User.findOne({ userName: userName }).populate('events')
   .then(userEvents => {
     console.log(userEvents);
     res.locals.userEvents = userEvents;
