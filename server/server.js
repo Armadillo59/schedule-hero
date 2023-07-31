@@ -33,7 +33,7 @@ app.post("/user/signup", userController.createUser, (req, res) => res.status(201
 // Login
 app.post('/user/login', userController.verifyUser, (req, res) => {
   console.log('VERIFY USER: ', res.locals.success);
-  return res.status(200).json({success: res.locals.success, userId: res.locals.id});
+  return res.status(200).json({success: res.locals.success, userId: res.locals.id, userName: res.locals.userName});
 });
 
 

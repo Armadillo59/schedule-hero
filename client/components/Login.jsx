@@ -53,7 +53,10 @@ function Login() {
       .then(response => response.json())
       .then((data) => {
         // If successful, store session, username and go to home
-        if (data.success) navigate('/');
+        if (data.success) {
+          localStorage.setItem('userName', data.userName);
+          navigate('/');
+        }
         else alert('Invalid username or password.');
 
       })

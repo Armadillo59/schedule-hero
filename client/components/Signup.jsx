@@ -54,7 +54,10 @@ function Signup() {
       .then((data) => {
         // If successful, store session, username and go to home
         if (data.err) alert('Username already exists.');
-        else navigate('/');
+        else {
+          localStorage.setItem('userName', data.userName);
+          navigate('/');
+        }
       })
       .catch((err) => {
         console.log('error signing up: ', err);
