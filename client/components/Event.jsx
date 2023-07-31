@@ -19,7 +19,7 @@ function Event( {eventName, user, participants, day, start, end}){
         
                 </Typography>
                 <Typography>
-                <strong>Participents</strong>: {participants}
+                <strong>Participants</strong>: {participants}
                 </Typography>
                 <Typography>
                      Day: {day}  Start:{start} - End:{end}

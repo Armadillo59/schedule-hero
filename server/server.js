@@ -34,7 +34,9 @@ app.post("/event", eventController.createEvent, (req, res) => res.status(201).js
     // GET - request: event name   
 // app.get("/availableTimes", eventController.viewAvailableTimes, /* some logic function */ (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../build')));
 
-// app.get("/events/:user", eventController.getEvents, /* look for events available for this user - parameter: userID and returns array of events with time availability for all*/ (res, req) => {});
+app.get("/events/:user", eventController.getEvents, (req, res) => {
+  res.status(200).json(res.locals.userEvents)
+});
 
 
 app.use((err, req, res, next) => {

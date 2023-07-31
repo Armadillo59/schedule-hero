@@ -8,12 +8,14 @@ function EventList() {
   const [ currentState, updateState ] = useState(null)
 
   
+  
   useEffect(()=>{
 
     const fetchEvent = async () =>{
       try {
-        const response = await fetch('/events/Pinta')
+        const response = await fetch('/events/anyboyd')
         const data = await response.json();
+        console.log('data',data)
       updateState(data);
       }catch (err){
         console.log(` ${err}`)
@@ -25,7 +27,7 @@ function EventList() {
 
   console.log('This is current state',currentState);
 
-  // const days = Object.keys(currentState.events[0].participants[0].availability).map((day)=> day)
+  //const days = Object.keys(currentState.events[0].participants[0].availability).map((day)=> day)
   // const starts = Object.keys(currentState.events[0].participants[0].availability).map((day)=> day.start);
   // const ends = Object.keys(currentState.events[0].participants[0].availability).map((day)=> day.end);
 
@@ -34,28 +36,24 @@ function EventList() {
       <div className='cardContainer'>
           <div>
           <Event
-          user={ currentState ? currentState.username : ''}
+          user={ currentState ? currentState.userName : ''}
           eventName = {
             currentState ? 
               currentState.events[0].eventName : ''
           }
 
           participants = {currentState ? 
-            currentState.events[0].participants[0].username : ''
+            currentState.events[0].participants[0].userName : ''
           }
           
           //{currentState ? 
-        //day = {Object.keys(currentState.events[0].participants[0].availability).map((day)=>{
-         // return day;
-        //})
-        //}
-         //stat = {Object.keys(currentState.events[0].participants[0].availability).map((start)=>{
-         // return day;
-        //})
-        //}
-         //end = {Object.keys(currentState.events[0].participants[0].availability).map((end)=>{
-         // return end;
-        //})
+
+          //day= {days}
+        day = {currentState ? Object.keys(currentState.events[0].participants[0].availability).map((day)=> day) : ''}
+
+         start = {currentState ? Object.keys(currentState.events[0].participants[0].availability).map((day)=>currentState.events[0].participants[0].availability[day].start) : ''}
+      
+         end = {currentState ? Object.keys(currentState.events[0].participants[0].availability).map((day)=>currentState.events[0].participants[0].availability[day].end) : ''}
         //}
           // day = {days}
           // start = {starts}
