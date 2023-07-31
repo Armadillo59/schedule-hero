@@ -1,13 +1,11 @@
 const { User } = require('../models/models.js')
 
+const userController = {};
 
-
-const userController = {
-    // Function to create a new user
-    createUser: function createUser(req, res, next) {
+userController.createUser = (req, res, next) => {
         const { userName } = req.body;
         const newUser = new User({
-        username: userName,
+        userName: userName,
         // email: email,
         // password: password, // make sure to hash the password before saving
         events: []
@@ -19,10 +17,10 @@ const userController = {
             console.log('User saved:', savedUser);
             return next();
         })
-        .catch((error) => {
-            console.error('Error saving user:', error);
+        .catch((err) => {
+            // console.error('Error saving user:', err);
+            return next(err)
         });
     }
-}
 
 module.exports = userController;

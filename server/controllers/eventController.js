@@ -23,7 +23,7 @@ eventController.createEvent = (req, res, next) => {
                 console.log('User added to existing event')
                 // After adding user to the event, add it to the user's events
                 User.updateOne(
-                    { username: userName },
+                    { userName: userName },
                     { $push: { events: savedEvent._id } }
                   ).then(() => console.log('Event added to user'));
             })
@@ -41,7 +41,7 @@ eventController.createEvent = (req, res, next) => {
   
               // After saving the event, add it to the user's events
               User.updateOne(
-                { username: userName },
+                { userName: userName },
                 { $push: { events: savedEvent._id } }
               ).then(() => console.log('Event added to user'));
             })
@@ -61,9 +61,9 @@ eventController.createEvent = (req, res, next) => {
 };
 
 eventController.getEvents = (req, res, next) => {
-  const { user } = req.params;
-  console.log(user)
-  User.findOne({ username: user }).populate('events')
+  const { userName } = req.params;
+  
+  User.findOne({ userName: userName }).populate('events')
   .then(userEvents => {
     res.locals.userEvents = userEvents;
     return next()
@@ -79,42 +79,3 @@ eventController.getEvents = (req, res, next) => {
 module.exports = eventController;
 
 
-
-// Function to create a new event but with a check if it already exists
-// function createEvent(eventName, participants, availability) 
-
-
-// User = { 
-//   _id1: {
-//   username: Vitaly,
-//   events: [Event_Id1, Event_Id2] 
-//   },
-//   _id2:{
-//   username: Yahya,
-//   events: [Event_Id1, Event_Id2] 
-//   }
-// };
-
-// Event = {
-//   _id1 : {
-//     eventName:  'Project' ,
-//     participants: [ 'Vitaly', 'Yahya'],
-//     availability: {'Vitaly': [
-//         { day: "Monday", start: "10:00", end: "12:00" },
-//         { day: "Tuesday", start: "14:00", end: "16:00" },
-//         { day: "Wednesday", start: "10:00", end: "12:00" },
-//         { day: "Thursday", start: "14:00", end: "16:00" },
-//         { day: "Friday", start: "10:00", end: "12:00" },
-//         { day: "Saturday", start: "14:00", end: "16:00" },
-//         { day: "Sunday", start: "10:00", end: "12:00" }
-//       ], 'Yahya': [
-//         { day: "Monday", start: "10:00", end: "12:00" },
-//         { day: "Tuesday", start: "14:00", end: "16:00" },
-//         { day: "Wednesday", start: "10:00", end: "12:00" },
-//         { day: "Thursday", start: "14:00", end: "16:00" },
-//         { day: "Friday", start: "10:00", end: "12:00" },
-//         { day: "Saturday", start: "14:00", end: "16:00" },
-//         { day: "Sunday", start: "10:00", end: "12:00" }
-//       ]}
-//   }
-// }
