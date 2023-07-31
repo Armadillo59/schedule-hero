@@ -25,7 +25,7 @@ function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const userName = data.get('email');
+    const userName = data.get('username');
     const password = data.get('password');
     
     if (userName === '' || password === '') {
@@ -53,8 +53,9 @@ function Login() {
       .then(response => response.json())
       .then((data) => {
         // If successful, store session, username and go to home
-        console.log(data);
-        navigate('/');
+        if (data.success) navigate('/');
+        else alert('Invalid username or password.');
+
       })
       .catch((err) => {
         console.log('error signing up: ', err);

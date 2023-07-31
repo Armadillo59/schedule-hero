@@ -25,7 +25,7 @@ function Signup() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const userName = data.get('email');
+    const userName = data.get('username');
     const password = data.get('password');
     
     if (userName === '' || password === '') {
@@ -53,8 +53,8 @@ function Signup() {
       .then(response => response.json())
       .then((data) => {
         // If successful, store session, username and go to home
-        console.log(data);
-        navigate('/');
+        if (data.err) alert('Username already exists.');
+        else navigate('/');
       })
       .catch((err) => {
         console.log('error signing up: ', err);
@@ -134,6 +134,15 @@ function Signup() {
               >
                 Sign Up
               </Button>
+              <Grid container>
+                <Grid item xs>
+                </Grid>
+                <Grid item>
+                  <Link href="/login" variant="body2" sx={{color: 'black', fontWeight: "bold"}}>
+                    {"I Already Have An Account"}
+                  </Link>
+                </Grid>
+              </Grid>
             </Box>
           </Paper>
         </Grid>

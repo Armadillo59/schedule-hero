@@ -25,8 +25,17 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // post data to db from FE /admin
-app.post("/user", userController.createUser, (req, res) => res.status(201).json(res.locals.savedUser) ); // redirect to "/:user"
 app.post("/event", eventController.createEvent, (req, res) => res.status(201).json(res.locals.eventCreated) )
+
+// Signup
+app.post("/user/signup", userController.createUser, (req, res) => res.status(201).json(res.locals.savedUser) );
+
+// Login
+app.post('/user/login', userController.verifyUser, (req, res) => {
+  console.log('VERIFY USER: ', res.locals.success);
+  return res.status(200).json({success: res.locals.success, userId: res.locals.id});
+});
+
 
 // change data to db from FE /participant
 
