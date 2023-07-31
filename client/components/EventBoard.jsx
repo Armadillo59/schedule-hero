@@ -51,9 +51,9 @@ function EventBoard() {
   }
 
   return (
-    <Container sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+    <Container disableGutters sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
       <Button variant='contained' sx={{ m: 3 }}onClick={handleClickOpen}>Add Event</Button>
-      <Container sx={{display: 'flex', justifyContent: 'center'}}>
+      <Container disableGutters sx={{display: 'flex', justifyContent: 'center'}}>
         <TextField 
               margin='dense'
               label='Username'
@@ -63,15 +63,15 @@ function EventBoard() {
               />
         <Button variant='outlined' sx={{marginTop: 2, marginLeft: 5}} onClick={handleClickAddUser}>Add User</Button>
       </Container>
-      <Container sx={{display: 'flex', justifyContent: 'center'}}>
+      <Container disableGutters sx={{display: 'flex', justifyContent: 'center'}}>
         {invalidUserName && <Alert sx={{position: 'absolute', marginTop: 2}} severity='error'>Please enter a username.</Alert>}
       </Container>
       <AddEventForm open={open} setOpen={setOpen} handleClose={handleClose} />
-      <Container sx={{m: 3, marginTop: 16}}>
+      <Container disableGutters sx={{ marginTop: 16, width: '90%' }}>
         <Typography variant="h5">
           Events
         </Typography>
-        <Paper elevation={4} sx={{  width: '90%', height: '60vh' }}>
+        <Paper elevation={4} sx={{  width: '100%', height: '60vh' }}>
           <Paper variant="outlined" sx={{ width: '100%', height: '100%', backgroundColor: ''}}>
             <EventList/>
           </Paper>
