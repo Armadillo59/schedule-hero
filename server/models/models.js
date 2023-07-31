@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 
 // Define User Schema
 const UserSchema = new mongoose.Schema({
-  username: { type: String, unique: true },
+  userName: { type: String, unique: true },
 //   email: String,
 //   password: String,
   events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }]

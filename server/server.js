@@ -25,8 +25,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // post data to db from FE /admin
 app.post("/user", userController.createUser, (req, res) => res.status(201).json(res.locals.savedUser) ); // redirect to "/:user"
-app.post("/event", eventController.createEvent, (req, res) => res.status(201).json(res.locals.eventCreated) );
-// app.post("/event/submitAvailability", eventController.submitAvailability, (req, res) => res.status(201).json(res.locals.availabilitySubmitted) )
+app.post("/event", eventController.createEvent, (req, res) => res.status(201).json(res.locals.eventCreated) )
 
 // change data to db from FE /participant
 
@@ -34,17 +33,22 @@ app.post("/event", eventController.createEvent, (req, res) => res.status(201).js
     // GET - request: event name   
 // app.get("/availableTimes", eventController.viewAvailableTimes, /* some logic function */ (req, res) => res.status(200).sendFile(path.resolve(__dirname, '../build')));
 
-app.get("/events/:user", eventController.getEvents, /* look for events available for this user - parameter: userID and returns array of events with time availability for all*/ (res, req) => {});
+// app.get("/events/:user", eventController.getEvents, /* look for events available for this user - parameter: userID and returns array of events with time availability for all*/ (res, req) => {});
 
-// app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
 
-if (process.env.NODE_ENV === 'production') { 
-    app.use(express.static(path.resolve(__dirname, '../build')));
-}
+app.use((err, req, res, next) => {
+    const defaultErr = {
+      log: 'Express error handler caught unknown middleware error',
+      status: 500,
+      message: { err: 'An error occurred at Middleware' },
+    };
+    const errorObj = Object.assign({}, defaultErr, err);
+    console.log(errorObj.log);
+    return (res.status(errorObj.status).json(errorObj.message))
+});
 
 app.listen(PORT, ()=>{
-    console.log('Listening on port 3000...')
+    console.log(`Server listening on port: ${PORT}...`)
 })
 
 module.exports = app;
