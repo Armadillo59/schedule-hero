@@ -22,32 +22,32 @@ function AddEventForm(props) {
     const [submitRequired, setSubmitRequired] = useState(false);
     const [availability, setAvailability] = useState({
       Monday: {
-        start: '',
-        end: ''
+        start: '0:00',
+        end: '24:00'
       },
       Tuesday: {
-        start: '',
-        end: ''
+        start: '0:00',
+        end: '24:00'
       },
       Wednesday: {
-        start: '',
-        end: ''
+        start: '0:00',
+        end: '24:00'
       },
       Thursday: {
-        start: '',
-        end: ''
+        start: '0:00',
+        end: '24:00'
       },
       Friday: {
-        start: '',
-        end: ''
+        start: '0:00',
+        end: '24:00'
       },
       Saturday: {
-        start: '',
-        end: ''
+        start: '0:00',
+        end: '24:00'
       },
       Sunday: {
-        start: '',
-        end: ''
+        start: '0:00',
+        end: '24:00'
       },
     });
 

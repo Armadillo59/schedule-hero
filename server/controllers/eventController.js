@@ -6,7 +6,7 @@ const eventController = {};
 // eventController.addUser = (req, res, next) => {}; - in the userController
 
 eventController.createEvent = (req, res, next) => {
-    const {eventName, eventDiscription, userName, availability} = req.body;
+    const {eventName, eventDescription, userName, availability} = req.body;
     
     // First, check if the event already exists
     Event.findOne({ eventName: eventName })

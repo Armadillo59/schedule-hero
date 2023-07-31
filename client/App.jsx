@@ -8,7 +8,6 @@ const App = () => {
   
     <ThemeProvider theme={theme}>
       <CssBaseline enableColorScheme />
-        <div>Placeholder App</div>
         <MainContainer />
     </ThemeProvider>
   );
