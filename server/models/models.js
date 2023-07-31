@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 // mongoose.connect('mongodb+srv://yahyatalab1:fairies@cluster0.tbowj6z.mongodb.net/', { useNewUrlParser: true, useUnifiedTopology: true });
 // mongoose.connection.once('open', () => {
@@ -12,6 +13,19 @@ const UserSchema = new mongoose.Schema({
 //   email: String,
   password: String,
   events: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Event' }]
+});
+
+const SALT_WORK_FACTOR = 10;
+
+UserSchema.pre('save', async function save(next) {
+  try {
+    const salt = await bcrypt.genSalt(SALT_WORK_FACTOR);
+    this.password = await bcrypt.hash(this.password, salt);
+    return next();
+  }
+  catch (err) {
+    return next(err);
+  }
 });
 
 // Define Event Schema
