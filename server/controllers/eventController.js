@@ -9,7 +9,9 @@ eventController.createEvent = (req, res, next) => {
     const {eventName, eventDescription, userName, availability} = req.body;
     
     // First, check if the event already exists
-    Event.findOne({ eventName: eventName })
+    User.findOne( {userName: userName})
+    .then((foundUser) => {
+      Event.findOne({ eventName: eventName })
       .then((foundEvent) => {
         if (foundEvent) {
           // If the event exists, add the user as a participant and their availability
@@ -51,16 +53,19 @@ eventController.createEvent = (req, res, next) => {
       .catch((error) => {
         console.error('Error finding event:', error);
       });
-  
+    }).catch((error) => {
+      console.error('Error finding user:', error);
+    });
+   
 
 };
 
 eventController.getEvents = (req, res, next) => {
-  const { userName } = req.params;
+  const { user } = req.params;
+  console.log(user);
   
-  User.findOne({ userName: userName }).populate('events')
+  User.findOne({ userName: user }).populate('events')
   .then(userEvents => {
-    console.log(userEvents);
     res.locals.userEvents = userEvents;
     return next()
   })
