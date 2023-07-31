@@ -19,7 +19,7 @@ const App = () => {
           <Routes>
             <Route path='/' element={<MainContainer />}></Route>
             <Route path='/login' element={<Login />}></Route>
-            {/* <Route path='/signup' element={<Signup />}></Route> */}
+            <Route path='/signup' element={<Signup />}></Route>
           </Routes>
         </BrowserRouter>
     </ThemeProvider>

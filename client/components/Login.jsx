@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -19,22 +20,45 @@ import { green } from '@mui/material/colors';
 const defaultTheme = createTheme();
 
 function Login() {
+  const navigate = useNavigate();
   
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const username = data.get('email');
+    const userName = data.get('email');
     const password = data.get('password');
     
-    if (username === '' || password === '') {
+    if (userName === '' || password === '') {
       alert('Please fill in all fields');
       return;
     }
   
     console.log({
-      username: username,
+      userName: userName,
       password: password,
     });
+
+    const body = {
+      userName: userName,
+      password: password
+    }
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    };
+
+    fetch(`/user/login`, requestOptions)
+      .then(response => response.json())
+      .then((data) => {
+        // If successful, store session, username and go to home
+        console.log(data);
+        navigate('/');
+      })
+      .catch((err) => {
+        console.log('error signing up: ', err);
+      })
   };
   
 
@@ -75,7 +99,7 @@ function Login() {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5" >
-              Sign in
+              Log In
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 , borderColor: 'green'}}>
               <TextField
@@ -108,7 +132,7 @@ function Login() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
-                Sign In
+                Log In
               </Button>
               <Grid container>
                 <Grid item xs>
@@ -117,7 +141,7 @@ function Login() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2" sx={{color: 'black', fontWeight: "bold"}}>
+                  <Link href="/signup" variant="body2" sx={{color: 'black', fontWeight: "bold"}}>
                     {"Sign Up"}
                   </Link>
                 </Grid>
