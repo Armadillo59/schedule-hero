@@ -25,7 +25,7 @@ function Signup() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const userName = data.get('email');
+    const userName = data.get('username');
     const password = data.get('password');
     
     if (userName === '' || password === '') {
