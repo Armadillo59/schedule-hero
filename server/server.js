@@ -25,8 +25,14 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // post data to db from FE /admin
-app.post("/user", userController.createUser, (req, res) => res.status(201).json(res.locals.savedUser) ); // redirect to "/:user"
 app.post("/event", eventController.createEvent, (req, res) => res.status(201).json(res.locals.eventCreated) )
+
+// Signup
+app.post("/user/signup", userController.createUser, (req, res) => res.status(201).json(res.locals.savedUser) );
+
+// Login
+
+
 
 // change data to db from FE /participant
 
