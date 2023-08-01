@@ -50,6 +50,7 @@ userController.verifyUser = (req, res, next) => {
             console.log('Password validated!');
             res.locals.success = true;
             res.locals.id = data._id;
+            res.locals.userName = userName;
           }
           else {
             res.locals.success = false;
