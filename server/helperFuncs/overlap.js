@@ -32,82 +32,82 @@ function overlapFunc(participants) {
     }
   }
 
-  return overlapTimes;
+  return Object.keys(overlapTimes).length !== 0 ? overlapTimes : 'There is no overlap in times among participants';
 };
 
 module.exports = overlapFunc;
 
 
 
-// Test cases
-const participants = [
-  {
-    user1: {type: String, ref: 'User'},
-    availability: {
-      Monday: {start: 10.00, end: 15.00},
-      Tuesday: {start: 10.00, end: 16.00},
-      Wednesday: {start: 10.00, end: 14.00}, 
-    }
-  },
-  {
-    user2: {type: String, ref: 'User'},
-    availability: {
-      Monday: {start: 11.00, end: 20.00},
-      Tuesday: {start: 11.00, end: 20.00},
-      Wednesday: {start: 11.00, end: 20.00}, 
-    }
-  },
-  {
-    user3: {type: String, ref: 'User'},
-    availability: {
-      Friday: {start: 9.00, end: 14.00},
-      Tuesday: {start: 9.00, end: 14.00},
-      Thursday: {start: 9.00, end: 14.00}, 
-    }
-  },
-]
+// Test cases ---------------
+// const participants = [
+//   {
+//     user1: {type: String, ref: 'User'},
+//     availability: {
+//       Monday: {start: 10.00, end: 15.00},
+//       Tuesday: {start: 10.00, end: 16.00},
+//       Wednesday: {start: 10.00, end: 14.00}, 
+//     }
+//   },
+//   {
+//     user2: {type: String, ref: 'User'},
+//     availability: {
+//       Monday: {start: 11.00, end: 20.00},
+//       Tuesday: {start: 11.00, end: 20.00},
+//       Wednesday: {start: 11.00, end: 20.00}, 
+//     }
+//   },
+//   {
+//     user3: {type: String, ref: 'User'},
+//     availability: {
+//       Friday: {start: 9.00, end: 14.00},
+//       Tuesday: {start: 9.00, end: 14.00},
+//       Thursday: {start: 9.00, end: 14.00}, 
+//     }
+//   },
+// ]
 
-const participants1 = [
-  {
-    user1: {type: String, ref: 'User'},
-    availability: {
-      Monday: {start: 10.00, end: 15.00},
-      Tuesday: {start: 10.00, end: 16.00},
-      Wednesday: {start: 10.00, end: 12.00}, 
-    }
-  },
-  {
-    user2: {type: String, ref: 'User'},
-    availability: {
-      Monday: {start: 11.00, end: 20.00},
-      Tuesday: {start: 11.00, end: 20.00},
-      Wednesday: {start: 11.00, end: 20.00}, 
-    }
-  },
-  {
-    user3: {type: String, ref: 'User'},
-    availability: {
-      Friday: {start: 9.00, end: 14.00},
-      Tuesday: {start: 9.00, end: 14.00},
-      Wednesday: {start: 9.00, end: 10.00}, 
-    }
-  },
-]
+// const participants1 = [
+//   {
+//     user1: {type: String, ref: 'User'},
+//     availability: {
+//       Monday: {start: 10.00, end: 15.00},
+//       Tuesday: {start: 10.00, end: 16.00},
+//       Wednesday: {start: 10.00, end: 12.00}, 
+//     }
+//   },
+//   {
+//     user2: {type: String, ref: 'User'},
+//     availability: {
+//       Monday: {start: 11.00, end: 20.00},
+//       Tuesday: {start: 11.00, end: 20.00},
+//       Wednesday: {start: 11.00, end: 20.00}, 
+//     }
+//   },
+//   {
+//     user3: {type: String, ref: 'User'},
+//     availability: {
+//       Friday: {start: 9.00, end: 14.00},
+//       Tuesday: {start: 9.00, end: 14.00},
+//       Wednesday: {start: 9.00, end: 10.00}, 
+//     }
+//   },
+// ]
 
-const participants2 = [
-  {
-    user1: {type: String, ref: 'User'},
-    availability: {
-      Monday: {start: 10.00, end: 15.00},
-      Tuesday: {start: 10.00, end: 16.00},
-      Wednesday: {start: 10.00, end: 14.00}, 
-    }
-  },
-]
+// const participants2 = [
+//   {
+//     user1: {type: String, ref: 'User'},
+//     availability: {
+//       Monday: {start: 10.00, end: 15.00},
+//       Tuesday: {start: 10.00, end: 16.00},
+//       Wednesday: {start: 10.00, end: 14.00}, 
+//     }
+//   },
+// ]
 
-console.log(overlapFunc(participants));
-console.log(overlapFunc(participants1));
-console.log(overlapFunc(participants2));
+// console.log(overlapFunc(participants));
+// console.log(overlapFunc(participants1));
+// console.log(overlapFunc(participants2));
 
 
 // mond
