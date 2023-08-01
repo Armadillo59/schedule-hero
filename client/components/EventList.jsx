@@ -11,10 +11,10 @@ function EventList() {
 
     const fetchEvent = async () =>{
       try {
-        const response = await fetch('/events/anyboyd')
+        const response = await fetch('/events/pinta')
         const data = await response.json();
         console.log('data',data)
-      updateState(data);
+       updateState(data);
       }catch (err){
         console.log(` ${err}`)
       }
