@@ -5,9 +5,7 @@ import { useState, useEffect } from 'react';
 //Usestate 
 
 function EventList() {
-  const [ currentState, updateState ] = useState(null)
-
-  
+  const [ currentState, updateState ] = useState(null);
   
   useEffect(()=>{
 
