@@ -38,7 +38,7 @@ const EventSchema = new mongoose.Schema({
       userName: {type: String, ref: 'User'},
       availability: Object
     }],
-  // availability: Object
+  worksForEverybody: Object
 });
 
 // Define User and Event Models
