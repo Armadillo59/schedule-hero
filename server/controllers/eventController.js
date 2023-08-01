@@ -1,6 +1,6 @@
 const {Event, User} = require('../models/models.js')
 // const User = require('../database/models.js')
-
+const overlapFunc = require('../helperFuncs/overlap.js')
 const eventController = {};
 
 // eventController.addUser = (req, res, next) => {}; - in the userController
@@ -18,8 +18,10 @@ eventController.createEvent = (req, res, next) => {
           foundEvent.participants.push({userName: userName, availability: availability});
 
           //added func that updates the intersection availability data in the DB
-          foundEvent.worksForEverbody = overlapFunc(foundEvent.participants)
-
+          console.log(foundEvent.participants);
+          const intersection = overlapFunc(foundEvent.participants)
+          foundEvent.worksForEverybody = intersection;
+          console.log(foundEvent.worksForEverybody);
           // Save the updated event
           foundEvent.save()
             .then((savedEvent) => {
@@ -39,9 +41,9 @@ eventController.createEvent = (req, res, next) => {
             worksForEverybody: []
           });
           
-          const instersection = overlapFunc(newEvent.participants)
+          const intersection = overlapFunc(newEvent.participants)
 
-          newEvent.worksForEverbody = instersection
+          newEvent.worksForEverybody = intersection
 
           newEvent.save()
             .then((savedEvent) => {

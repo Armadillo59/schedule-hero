@@ -9,7 +9,7 @@ userController.createUser = (req, res, next) => {
         userName: userName,
         password: password,
         // email: email,
-        password: password, // make sure to hash the password before saving
+        // password: password, // make sure to hash the password before saving
         events: []
         });
     
