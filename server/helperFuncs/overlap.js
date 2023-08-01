@@ -11,7 +11,7 @@ function overlapFunc(participants) {
     let startTimesArray = [];
     let endTimesArray = [];
     startTimesArray.push(Number(participants[0].availability[day].start.split(":")[0]));
-    endTimesArray.push(Number(participants[0].availability[day].end.split(":")));
+    endTimesArray.push(Number(participants[0].availability[day].end.split(":")[0]));
     for (let i = 1; i < participants.length; i++) {
       if (!participants[i].availability[day]) {
         continueLoop = false;
@@ -34,9 +34,9 @@ function overlapFunc(participants) {
   }
 
   return overlapTimes;
-};
+}
 
-module.exports = overlapFunc;
+module.exports = overlapFunc
 
 // const start = new Date(`1970-01-01T${participant.availability[day].start}:00Z`);
 // const end = new Date(`1970-01-01T${participant.availability[day].end}:00Z`)
@@ -47,32 +47,32 @@ module.exports = overlapFunc;
 
 
 // Test cases
-// const participants = [
-//   {
-//     user1: {type: String, ref: 'User'},
-//     availability: {
-//       Monday: {start: "10.00", end: "15.00"},
-//       Tuesday: {start: "10.00", end: "16.00"},
-//       Wednesday: {start: "10.00", end: "14.00"}, 
-//     }
-//   },
-//   {
-//     user2: {type: String, ref: 'User'},
-//     availability: {
-//       Monday: {start: "11.00", end: "20.00"},
-//       Tuesday: {start: "11.00", end: "20.00"},
-//       Wednesday: {start: "11.00", end: "20.00"}, 
-//     }
-//   },
-//   {
-//     user3: {type: String, ref: 'User'},
-//     availability: {
-//       Friday: {start: "9.00", end: "14.00"},
-//       Tuesday: {start: "9.00", end: "14.00"},
-//       Thursday: {start: "9.00", end: "14.00"}, 
-//     }
-//   },
-// ]
+const participants = [
+  {
+    user1: {type: String, ref: 'User'},
+    availability: {
+      Monday: {start: "10.00", end: "15.00"},
+      Tuesday: {start: "10.00", end: "16.00"},
+      Wednesday: {start: "10.00", end: "14.00"}, 
+    }
+  },
+  {
+    user2: {type: String, ref: 'User'},
+    availability: {
+      Monday: {start: "11.00", end: "20.00"},
+      Tuesday: {start: "11.00", end: "20.00"},
+      Wednesday: {start: "11.00", end: "20.00"}, 
+    }
+  },
+  {
+    user3: {type: String, ref: 'User'},
+    availability: {
+      Friday: {start: "9.00", end: "14.00"},
+      Tuesday: {start: "9.00", end: "14.00"},
+      Thursday: {start: "9.00", end: "14.00"}, 
+    }
+  },
+]
 
 // const participants1 = [
 //   {
